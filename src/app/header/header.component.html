@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/employees" *ngIf="pqrService.isAllowed(2)">Employees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/students" *ngIf="pqrService.isAllowed(1)">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/aboutus">About us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/accounts">Accounts</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login" *ngIf="!pqrService.isAuthentic()">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/logout" *ngIf="pqrService.isAuthentic()">Logout</a>
+    </li>
+
+  </ul>
+</nav>
+
