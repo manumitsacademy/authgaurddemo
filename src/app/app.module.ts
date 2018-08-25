@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ContentareaComponent } from './contentarea/contentarea.component';
@@ -20,9 +21,16 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { PqrService } from './pqr.service';
-import {TokenInterceptorService } from  './token-interceptor.service';
+import { TokenInterceptorService } from  './token-interceptor.service';
 import { LeadsModule } from './leads/leads.module';
-
+var config= {
+  apiKey: "AIzaSyCNPiNwpdoABAePeRfuhsEvBFNaGxoDlCM",
+  authDomain: "manumitsangfiredemo.firebaseapp.com",
+  databaseURL: "https://manumitsangfiredemo.firebaseio.com",
+  projectId: "manumitsangfiredemo",
+  storageBucket: "manumitsangfiredemo.appspot.com",
+  messagingSenderId: "435167824461"
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +78,9 @@ import { LeadsModule } from './leads/leads.module';
         component:AccountsComponent,
         canActivate:[PqrService]
       }
-    ]), LeadsModule
+    ]), LeadsModule,
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule
   ],
   providers: [AbcService,AuthgaurdService,LevelService,{
     provide: HTTP_INTERCEPTORS,

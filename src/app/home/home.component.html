@@ -1,3 +1,20 @@
-<p>
-  home works!
-</p>
+<button (click)="showAddStudent()">Add Student</button>
+<ul>
+  <li *ngFor="let student of students">
+    {{student.firstname}}
+    <button (click)="deleteStudent(student.id)">Delete</button>
+    <button (click)="showEditStudent(student)">Edit</button>
+  </li>
+</ul>
+<div *ngIf="showAddStudentFlag">
+  <input type="text" #firstname placeholder=" Please enter firstname"><br>
+  <input type="text" #lastname placeholder=" Please enter lastname"><br>
+  <input type="text" #age placeholder="Please enter age"><br>
+  <button (click)="addStudent(firstname.value,lastname.value,age.value)">Add Student</button>
+</div>
+<div *ngIf="showEditStudentFlag">
+  <input type="text" #firstname placeholder=" Please enter firstname" value="{{currentStudent.firstname}}"><br>
+  <input type="text" #lastname placeholder=" Please enter lastname" value="{{currentStudent.lastname}}"><br>
+  <input type="text" #age placeholder="Please enter age" value="{{currentStudent.age}}"><br>
+  <button (click)="editStudent(firstname.value,lastname.value,age.value)">Save Student</button>
+</div>
